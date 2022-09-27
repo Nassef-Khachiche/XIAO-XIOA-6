@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] private Scrollbar staminaBar;
-    //[SerializeField] private float stamina = 15f;
+    // gun transform
+    [SerializeField] private Transform gun;
+
     [SerializeField] private float runSpeed = 5f;
     Vector2 moveInput;
-    Rigidbody2D rb;
+    Rigidbody2D playerRigidbody;
     bool enemyHit = false;
     Vector2 playerPosition;
 
@@ -21,19 +22,23 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.freezeRotation = true;
-        playerPosition = rb.position;
+        // hides gun
+        gun.GetComponent<Renderer>().enabled = false;
+
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody.freezeRotation = true;
+        playerPosition = playerRigidbody.position;
     }
 
     void Update()
     {
         Move();
         FlipSprite();
+        AimWeapon();
 
         if (enemyHit == true)
         {
-            rb.position = playerPosition;
+            playerRigidbody.position = playerPosition;
         }
     }
 
@@ -42,18 +47,23 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
+    void AimWeapon() 
+    {
+        // make it so it can move when ever you need to move it
+        gun.eulerAngles = new Vector3(gun.rotation.x, gun.rotation.y, 10f);
+    }
 
     void Move()
     {
 
-        Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, rb.velocity.y);
+        Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, playerRigidbody.velocity.y);
 
         if (moveInput.y > 0 && IsGrounded())
         {
             playerVelocity = new Vector2(moveInput.x, jumpingPower);
         }
 
-        rb.velocity = playerVelocity;
+        playerRigidbody.velocity = playerVelocity;
 
     }
 
@@ -64,10 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipSprite()
     {
-        bool playerHasSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        bool playerHasSpeed = Mathf.Abs(playerRigidbody.velocity.x) > Mathf.Epsilon;
         if (playerHasSpeed)
         {
-            transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), transform.localScale.y);
+            transform.localScale = new Vector2(Mathf.Sign(playerRigidbody.velocity.x), transform.localScale.y);
         }
     }
 

@@ -18,9 +18,6 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        //rb.AddForce(new Vector2(0, Mathf.Sin(speed * Time.deltaTime * 1) - 10f / 1f));
-        transform.position = Vector3.Lerp(startposition, endposition, (Mathf.Sin(speed * Time.time) + 0.1f) / 0.1f);
-        //rb.AddTorque(0.00002f, ForceMode2D.Force);
-        //transform.rotation = new Quaternion(transform.rotation.x, transform.rotation.y, (Mathf.Cos(2f * Time.deltaTime) + 0.1f), transform.rotation.w);
+        transform.position = Vector3.Lerp(startposition, endposition, (Mathf.Sin(speed * Time.time)) / 0.1f);
     }
 }
