@@ -5,8 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+
     // gun transform
     [SerializeField] private Transform gun;
+    [SerializeField] private Transform gernade;
 
     [SerializeField] private float runSpeed = 5f;
     Vector2 moveInput;
@@ -23,7 +25,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         // hides gun
-        gun.GetComponent<Renderer>().enabled = false;
+        //gun.GetComponent<Renderer>().enabled = false;
+        gernade.GetComponent<Renderer>().enabled = false;
+
 
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerRigidbody.freezeRotation = true;

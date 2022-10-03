@@ -18,6 +18,6 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.Lerp(startposition, endposition, (Mathf.Sin(speed * Time.time)) / 0.1f);
+        //transform.position = Vector3.Lerp(startposition, endposition, (Mathf.Sin(speed * Time.time)) / 0.1f);
     }
 }
