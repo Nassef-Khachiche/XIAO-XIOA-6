@@ -1,5 +1,5 @@
 # XIAO-XIOA-6
-[*] Unity game
-[*] C#
-[*] Fun
-[*] Made by the coolest software developer :)
+- [x] Unity game
+- [x] C#
+- [x] Fun
+- [x] Made by the coolest software developer :)
