@@ -51,12 +51,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 
-    void AimWeapon() 
-    {
-        // make it so it can move when ever you need to move it
-        gun.eulerAngles = new Vector3(gun.rotation.x, gun.rotation.y, 10f);
-    }
-
     void Move()
     {
 

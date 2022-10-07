@@ -19,10 +19,10 @@ public class Gun_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Look();
+        OnLook();
     }
 
-    void Look() 
+    void OnLook() 
     {
         mousePosition = Camera.main.ViewportToWorldPoint(mousePosition);
         gun.eulerAngles = new Vector3(gun.rotation.x, gun.rotation.y, mousePosition.z);
