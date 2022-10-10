@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 offset;
 
     // gun transform
     [SerializeField] private Transform gun;
@@ -38,13 +40,17 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         FlipSprite();
-        AimWeapon();
 
         if (enemyHit == true)
         {
             playerRigidbody.position = playerPosition;
         }
     }
+
+    //private void LateUpdate()
+    //{
+    //    transform.position = new Vector3(target.position.x, target.position.y, -1);
+    //}
 
     public bool IsGrounded() 
     {
