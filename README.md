@@ -1,4 +1,5 @@
-# XIAO-XIOA-6
+# XIAO-XIAO-6
+A remastered version of Xiao Xiao 5
 - [x] Unity game
 - [x] C#
 - [x] Fun
