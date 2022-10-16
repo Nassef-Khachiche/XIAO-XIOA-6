@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    GameObject duplicateBullet;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Rigidbody2D bulletRb;
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
 
@@ -47,10 +50,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //private void LateUpdate()
-    //{
-    //    transform.position = new Vector3(target.position.x, target.position.y, -1);
-    //}
+    void OnFire() 
+    {
+        // bullet bug
+        duplicateBullet = Instantiate(bullet, gun.position, gun.rotation);
+        bulletRb.AddForce(bulletRb.position * -100);
+    }
 
     public bool IsGrounded() 
     {
@@ -90,6 +95,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             enemyHit = true;
+        }
+
+        if (collision.gameObject.tag == "Bullet")
+        {
+            //bulletRb.GetComponent<Renderer>().enabled = false;
         }
     }
 
