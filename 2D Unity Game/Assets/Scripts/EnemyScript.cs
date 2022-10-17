@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] public GameObject Enemy;
     [SerializeField] public Transform gun;
     public float move = 0;
     [SerializeField] Transform player;
@@ -27,5 +28,13 @@ public class EnemyScript : MonoBehaviour
     void OnLook()
     {
         gun.eulerAngles = new Vector3(player.position.x, player.position.y, player.position.x + (player.position.y * -1) * 10);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Destroy(Enemy);
+        }
     }
 }

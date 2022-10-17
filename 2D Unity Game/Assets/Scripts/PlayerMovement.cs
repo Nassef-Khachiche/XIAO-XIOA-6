@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Rigidbody2D dupedBullet;
     GameObject duplicateBullet;
     [SerializeField] GameObject bullet;
     [SerializeField] Rigidbody2D bulletRb;
@@ -52,9 +53,31 @@ public class PlayerMovement : MonoBehaviour
 
     void OnFire() 
     {
-        // bullet bug
         duplicateBullet = Instantiate(bullet, gun.position, gun.rotation);
-        bulletRb.AddForce(bulletRb.position * -100);
+        //bulletRb.AddForce(bulletRb.position * -100, ForceMode2D.Force);
+        dupedBullet = duplicateBullet.GetComponent<Rigidbody2D>();
+        if (dupedBullet.position.x > 1f)
+        {
+            if (transform.localScale.x == -1f)
+            {
+                dupedBullet.AddForce((dupedBullet.position * -1) * 100);
+            }
+            else
+            {
+                dupedBullet.AddForce((dupedBullet.position * -1) * -100);
+            }
+        }
+        else
+        {
+            if (transform.localScale.x == -1f)
+            {
+                dupedBullet.AddForce(dupedBullet.position * 100);
+            }
+            else
+            {
+                dupedBullet.AddForce(dupedBullet.position * -100);
+            }
+        }
     }
 
     public bool IsGrounded() 
@@ -97,10 +120,6 @@ public class PlayerMovement : MonoBehaviour
             enemyHit = true;
         }
 
-        if (collision.gameObject.tag == "Bullet")
-        {
-            //bulletRb.GetComponent<Renderer>().enabled = false;
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

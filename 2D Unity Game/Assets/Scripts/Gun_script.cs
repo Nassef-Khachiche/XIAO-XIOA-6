@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Gun_script : MonoBehaviour
 {
+    [SerializeField] public GameObject player;
     [SerializeField] public Transform gun;
     public float move = 0;
     Vector3 mousePosition;
@@ -26,7 +27,14 @@ public class Gun_script : MonoBehaviour
     {
         mousePosition = Input.mousePosition;
         mousePosition  = Camera.main.ScreenToWorldPoint(mousePosition);
-        gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, mousePosition.x + mousePosition.y * 15);
+        if ()
+        {
+            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) * player.transform.position.y);
+        }
+        else 
+        {
+            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) * player.transform.position.y);
+        }
     }
 
 
