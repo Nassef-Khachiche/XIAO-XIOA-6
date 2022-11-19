@@ -526,8 +526,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.2, y: -0.7, z: -10}
-  m_LocalScale: {x: 1.0113, y: 0.96072483, z: 1.0113}
+  m_LocalPosition: {x: 5.63, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -648,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 562168315}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 12.89, y: -13.93, z: 0}
-  m_LocalScale: {x: 2, y: 0.6, z: 2}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3428,6 +3428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be317871420fa7444aff0ed24bc85296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 562168315}
   Enemy: {fileID: 672019026}
   gun: {fileID: 204102732}
   move: 0
@@ -3539,15 +3540,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672019026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.54, y: -0.84, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00637471, w: 0.99997973}
+  m_LocalPosition: {x: 12.95, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 204102732}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.73}
 --- !u!1 &943152770
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,15 +3698,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952356759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52.56, y: -0.88, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.00637471, w: 0.99997973}
+  m_LocalPosition: {x: 18.129997, y: -0.4100001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 628261972}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.73}
 --- !u!61 &952356761
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3818,6 +3819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be317871420fa7444aff0ed24bc85296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 562168315}
   Enemy: {fileID: 952356759}
   gun: {fileID: 628261972}
   move: 0
@@ -3936,7 +3938,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229555748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.2, y: -0.7, z: 0}
+  m_LocalPosition: {x: 6.17, y: 2.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3979,6 +3981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059841345b9321f4facc407160140a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vcam: {fileID: 0}
   bullet: {fileID: 562168315}
   bulletRb: {fileID: 562168320}
   target: {fileID: 1229555749}
@@ -4290,7 +4293,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 1229555749}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 9.256162
@@ -4317,7 +4320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989832206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.2, y: -0.7, z: -10}
+  m_LocalPosition: {x: 5.63, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

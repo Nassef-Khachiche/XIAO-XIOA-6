@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Packages;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public CinemachineVirtualCamera vcam;
     Vector3 mousePosition;
     Rigidbody2D dupedBullet;
     GameObject duplicateBullet;
@@ -35,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         // hides gun
         //gun.GetComponent<Renderer>().enabled = false;
         gernade.GetComponent<Renderer>().enabled = false;
-
+        vcam = GetComponent<CinemachineVirtualCamera>();
 
         playerRigidbody = GetComponent<Rigidbody2D>();
         playerRigidbody.freezeRotation = true;
@@ -44,10 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //Move();
-        //FlipSprite();
-
-        Camera.main.transform.position = dupedBullet.position;
+        Move();
+        FlipSprite();
 
         if (enemyHit == true)
         {
