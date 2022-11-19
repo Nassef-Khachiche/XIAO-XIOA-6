@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Packages;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Vector3 mousePosition;
     Rigidbody2D dupedBullet;
     GameObject duplicateBullet;
     [SerializeField] GameObject bullet;
@@ -42,8 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Move();
-        FlipSprite();
+        //Move();
+        //FlipSprite();
+
+        Camera.main.transform.position = dupedBullet.position;
 
         if (enemyHit == true)
         {
@@ -54,29 +58,18 @@ public class PlayerMovement : MonoBehaviour
     void OnFire() 
     {
         duplicateBullet = Instantiate(bullet, gun.position, gun.rotation);
-        //bulletRb.AddForce(bulletRb.position * -100, ForceMode2D.Force);
         dupedBullet = duplicateBullet.GetComponent<Rigidbody2D>();
-        if (dupedBullet.position.x > 1f)
+
+        mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        if (transform.localScale.x == -1f)
         {
-            if (transform.localScale.x == -1f)
-            {
-                dupedBullet.AddForce((dupedBullet.position * -1) * 100);
-            }
-            else
-            {
-                dupedBullet.AddForce((dupedBullet.position * -1) * -100);
-            }
+            dupedBullet.AddForce((mousePosition * -1) * -100);
         }
         else
         {
-            if (transform.localScale.x == -1f)
-            {
-                dupedBullet.AddForce(dupedBullet.position * 100);
-            }
-            else
-            {
-                dupedBullet.AddForce(dupedBullet.position * -100);
-            }
+            dupedBullet.AddForce((mousePosition * -1) * -100);
         }
     }
 

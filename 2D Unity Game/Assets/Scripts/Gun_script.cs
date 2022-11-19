@@ -27,14 +27,16 @@ public class Gun_script : MonoBehaviour
     {
         mousePosition = Input.mousePosition;
         mousePosition  = Camera.main.ScreenToWorldPoint(mousePosition);
-        if ()
+        if (player.transform.localScale.x <= -1f)
         {
-            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) * player.transform.position.y);
+            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x - mousePosition.y));
         }
-        else 
+        else
         {
-            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) * player.transform.position.y);
+            gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) - 1f);
         }
+
+        Debug.Log(mousePosition);
     }
 
 
