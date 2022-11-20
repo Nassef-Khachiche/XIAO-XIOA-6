@@ -9,16 +9,19 @@ public class PlayerMovement : MonoBehaviour
 {
     public CinemachineVirtualCamera vcam;
     Vector3 mousePosition;
+
+    public float time = 0f;
+
     Rigidbody2D dupedBullet;
-    GameObject duplicateBullet;
+    public GameObject duplicateBullet;
     [SerializeField] GameObject bullet;
+
     [SerializeField] Rigidbody2D bulletRb;
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
 
     // gun transform
     [SerializeField] private Transform gun;
-    [SerializeField] private Transform gernade;
 
     [SerializeField] private float runSpeed = 5f;
     Vector2 moveInput;
@@ -29,14 +32,13 @@ public class PlayerMovement : MonoBehaviour
     // Jump
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    private float jumpingPower = 12f;
+    private float jumpingPower = 6f;
 
 
     void Start()
     {
         // hides gun
         //gun.GetComponent<Renderer>().enabled = false;
-        gernade.GetComponent<Renderer>().enabled = false;
         vcam = GetComponent<CinemachineVirtualCamera>();
 
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnFire() 
+    void OnFire()
     {
         duplicateBullet = Instantiate(bullet, gun.position, gun.rotation);
         dupedBullet = duplicateBullet.GetComponent<Rigidbody2D>();
@@ -69,11 +71,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            dupedBullet.AddForce((mousePosition * -1) * -100);
+            dupedBullet.AddForce((mousePosition * 1) * 100);
         }
     }
 
-    public bool IsGrounded() 
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
@@ -112,7 +114,6 @@ public class PlayerMovement : MonoBehaviour
         {
             enemyHit = true;
         }
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)

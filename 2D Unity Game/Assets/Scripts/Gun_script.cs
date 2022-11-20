@@ -36,7 +36,6 @@ public class Gun_script : MonoBehaviour
             gun.eulerAngles = new Vector3(mousePosition.x, mousePosition.y, (mousePosition.x + mousePosition.y) - 1f);
         }
 
-        Debug.Log(mousePosition);
     }
 
 
