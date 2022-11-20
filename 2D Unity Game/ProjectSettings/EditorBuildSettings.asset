@@ -10,7 +10,13 @@ EditorBuildSettings:
     guid: 1b6d54aab4798624dae853411ccb6153
   - enabled: 1
     path: Assets/Scenes/Level 2.unity
-    guid: bfcae8ac1b7e69641b2450cfa8f3481a
+    guid: 51fed7e7e43ad25448d6774729d68fa5
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: babb9201ac20834428af9010415a6ce6
+  - enabled: 1
+    path: Assets/Scenes/You won!.unity
+    guid: 4ee054c79db6c6c47bdcac32355fcb7f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: bba5a6a7f1f6fde43923c9843317b893,
       type: 2}

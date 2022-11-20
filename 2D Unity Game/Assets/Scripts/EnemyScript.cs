@@ -19,26 +19,46 @@ public class EnemyScript : MonoBehaviour
     Rigidbody2D rbGun;
     Vector3 position = new Vector3(0f, 0f);
     private Rigidbody2D rb;
-
-
-    GameObject duplicateEnemy;
-    Rigidbody2D dupedEnemy;
+    int counter;
+    Vector3 pForce;
 
     void Start()
     {
         rbGun = GetComponent<Rigidbody2D>();
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
+
     }
 
     void Update()
     {
         MyCoroutine();
         OnLook();
+        CheckNextLevel();
+    }
+
+    public void CheckNextLevel() 
+    {
+        if (counter == 10 && SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SceneManager.LoadScene(1);
+
+        }
+
+        if (counter == 15 && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(2);
+        }
+
+        if (counter == 20 && SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 
     void MyCoroutine()
     {
+        Vector3 power = new Vector3(player.position.x, 3f, player.position.z);
         float randnum = Random.Range(0.001f, 0.005f);
         time += randnum;
         if (time > 2f)
@@ -48,26 +68,15 @@ public class EnemyScript : MonoBehaviour
 
             if (transform.localScale.x == -1f)
             {
-                dupedBullet.AddForce((player.position * -1) * 100);
+                dupedBullet.AddForce((power * -1) * -100);
             }
             else
             {
-                dupedBullet.AddForce((player.position * -1) * 100);
+                dupedBullet.AddForce((power * -1) * -100);
             }
             time = 0;
         }
     }
-
-    private void FlipSprite()
-    {
-        bool playerHasSpeed = Mathf.Abs(dupedEnemy.velocity.x) > Mathf.Epsilon;
-
-        if (playerHasSpeed)
-        {
-            transform.localScale = new Vector2(Mathf.Sign(dupedEnemy.velocity.x), transform.localScale.y);
-        }
-    }
-
 
     void OnLook()
     {
@@ -78,13 +87,11 @@ public class EnemyScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            float rnd = Random.Range(-10f, 20f);
+            counter = counter + 1;
+            Debug.Log(counter);
+            float rnd = Random.Range(-5f, 15f);
             Vector3 spawnpoint = new Vector3(rnd, 10f, 0f);
-            duplicateEnemy = Instantiate(Enemy, spawnpoint, player.rotation);
-            dupedEnemy = duplicateEnemy.GetComponent<Rigidbody2D>();
-            FlipSprite();
-
-            Destroy(Enemy);
+            Enemy.transform.position = spawnpoint;
         }
     }
 }
