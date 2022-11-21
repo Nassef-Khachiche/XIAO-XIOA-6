@@ -39,18 +39,17 @@ public class EnemyScript : MonoBehaviour
 
     public void CheckNextLevel() 
     {
-        if (counter == 10 && SceneManager.GetActiveScene().buildIndex == 0)
+        if (counter >= 10 && SceneManager.GetActiveScene().buildIndex == 0)
         {
             SceneManager.LoadScene(1);
-
         }
 
-        if (counter == 15 && SceneManager.GetActiveScene().buildIndex == 1)
+        if (counter >= 10 && SceneManager.GetActiveScene().buildIndex == 1)
         {
             SceneManager.LoadScene(2);
         }
 
-        if (counter == 20 && SceneManager.GetActiveScene().buildIndex == 2)
+        if (counter >= 10 && SceneManager.GetActiveScene().buildIndex == 2)
         {
             SceneManager.LoadScene(3);
         }
